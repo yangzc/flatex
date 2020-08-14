@@ -1,9 +1,12 @@
 import 'char_font.dart';
 
 class Font {
-  String fontName;
   int fontId;
+  String fontName;
   num space;
-  List<CharFont> charFont;
+  String path;
+  List<CharFont> charFonts = List();
 
+
+  Font(this.fontId, this.path, this.fontName, this.space);
 }
