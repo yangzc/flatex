@@ -1,9 +1,9 @@
-import 'package:flatex/char_font.dart';
-import 'package:flatex/font.dart';
+import 'package:flatex/font/char_font.dart';
+import 'package:flatex/font/font.dart';
 import 'package:xml/xml.dart';
 
-import 'utils/file_utils.dart';
-import 'utils/math_utils.dart';
+import '../utils/file_utils.dart';
+import '../utils/math_utils.dart';
 
 class FLatexFont {
 
