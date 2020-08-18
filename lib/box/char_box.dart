@@ -9,14 +9,15 @@ import '../box.dart';
 
 class CharBox extends Box {
   String text;
+  double fontSize;
 
-  CharBox(this.text);
+  CharBox(this.text, this.fontSize);
 
   @override
   Widget buildWidget(BuildContext context) {
     return Text(
       text,
-      style: TextStyle(color: Colors.blue),
+      style: TextStyle(color: Colors.blue, fontSize: fontSize),
     );
   }
 }

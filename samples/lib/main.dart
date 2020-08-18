@@ -1,6 +1,7 @@
 import 'package:flatex/atom.dart';
 import 'package:flatex/box.dart';
 import 'package:flatex/parse/tex_formula.dart';
+import 'package:flatex/tex_environment.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -77,11 +78,11 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
 //    TexParser parser = TexParser("\\frac{abcdef}{123456}", null);
 //    parser.parse();
-    TeXFormula formula = TeXFormula.parse("\\frac{123}{abc}");
+    TeXFormula formula = TeXFormula.parse("1+\\dot{2}+\\frac{123}{abc}");
     Atom root = formula.root;
     Widget child;
-    if(root != null) {
-      Box box = root.createBox(null);
+    if (root != null) {
+      Box box = root.createBox(TexEnvironment(16));
       child = box.buildWidget(context);
     } else {
       print("empty!");
@@ -92,7 +93,11 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: child ?? Text("Empty", style: TextStyle(color: Colors.red),),
+      body: child ??
+          Text(
+            "Empty",
+            style: TextStyle(color: Colors.red),
+          ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',

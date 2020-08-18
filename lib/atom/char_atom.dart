@@ -15,6 +15,6 @@ class CharAtom extends Atom {
 
   @override
   Box createBox(TexEnvironment environment) {
-    return CharBox(text);
+    return CharBox(text, environment.fontSize);
   }
 }
