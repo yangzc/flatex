@@ -42,7 +42,11 @@ packages:
       name: collection
       url: "https://pub.flutter-io.cn"
     source: hosted
+<<<<<<< HEAD
     version: "1.15.0-nullsafety.2"
+=======
+    version: "1.15.0-nullsafety"
+>>>>>>> e7b0c58d3b54b4bdc4a69c6fdf2e584f13095bec
   convert:
     dependency: transitive
     description:
@@ -101,7 +105,11 @@ packages:
       name: path
       url: "https://pub.flutter-io.cn"
     source: hosted
+<<<<<<< HEAD
     version: "1.8.0-nullsafety"
+=======
+    version: "1.7.0"
+>>>>>>> e7b0c58d3b54b4bdc4a69c6fdf2e584f13095bec
   petitparser:
     dependency: transitive
     description:
@@ -169,14 +177,22 @@ packages:
       name: vector_math
       url: "https://pub.flutter-io.cn"
     source: hosted
+<<<<<<< HEAD
     version: "2.1.0-nullsafety.2"
+=======
+    version: "2.1.0-nullsafety"
+>>>>>>> e7b0c58d3b54b4bdc4a69c6fdf2e584f13095bec
   xml:
     dependency: transitive
     description:
       name: xml
       url: "https://pub.flutter-io.cn"
     source: hosted
+<<<<<<< HEAD
     version: "4.4.0"
+=======
+    version: "4.3.0"
+>>>>>>> e7b0c58d3b54b4bdc4a69c6fdf2e584f13095bec
 sdks:
   dart: ">=2.10.0-0.0.dev <2.10.0"
   flutter: ">=1.17.0 <2.0.0"
