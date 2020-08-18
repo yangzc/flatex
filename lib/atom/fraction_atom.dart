@@ -1,13 +1,13 @@
 ///
 /// Copyright (C) 2020 The flatex Project
 /// @author yangzc on 2020/08/18.
-///
 import 'package:flatex/box/column_box.dart';
 import 'package:flatex/box/hline_box.dart';
 
 import '../atom.dart';
 import '../box.dart';
 import '../tex_environment.dart';
+import 'dart:ui';
 
 class FractionAtom extends Atom {
   Atom num, denom;
@@ -25,11 +25,18 @@ class FractionAtom extends Atom {
 
     Box numBox = num.createBox(environment);
     Box denomBox = denom.createBox(environment);
+    Size numSize = numBox.size;
+    Size denomSize = denomBox.size;
 
-    print(depth);
+    double width = 0;
+    if(numSize.width > denomSize.width) {
+      width = numSize.width;
+    } else {
+      width = denomSize.width;
+    }
     ColumnBox columnBox = ColumnBox();
     columnBox.add(numBox);
-    columnBox.add(HLineBox().setWidth(50.0 - depth * 10).setHeight(2));
+    columnBox.add(HLineBox().setWidth(width + 10).setHeight(2));
     columnBox.add(denomBox);
     return columnBox;
   }

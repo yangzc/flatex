@@ -20,4 +20,19 @@ class ColumnBox extends Box {
     }
     return Column(children: items,);
   }
+
+  @override
+  Size get size {
+    double width = 0, height = 0;
+    if(children != null) {
+      children.forEach((element) {
+        Size itemSize = element.size;
+        if(itemSize.width > width) {
+          width = itemSize.width;
+        }
+        height += itemSize.height;
+      });
+    }
+    return Size(width, height);
+  }
 }

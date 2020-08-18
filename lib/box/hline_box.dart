@@ -14,9 +14,9 @@ class HLineBox extends Box {
   @override
   Widget buildWidget(BuildContext context) {
     return Container(
-      height: height,
+      height: size.height,
       color: Colors.black,
-      width: width,
+      width: size.width,
     );
   }
 }
