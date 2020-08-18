@@ -1,3 +1,6 @@
+import 'package:flatex/atom.dart';
+import 'package:flatex/box.dart';
+import 'package:flatex/parse/tex_formula.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -72,6 +75,15 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+//    TexParser parser = TexParser("\\frac{abcdef}{123456}", null);
+//    parser.parse();
+    TeXFormula formula = TeXFormula.parse("\\frac{abcdef}{123456}");
+    Atom root = formula.root;
+    if(root != null) {
+      Box box = root.createBox(null);
+      Widget widget = box.buildWidget(context);
+    }
+
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
