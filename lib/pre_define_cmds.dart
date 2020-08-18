@@ -6,6 +6,7 @@ import 'dart:collection';
 import 'package:flatex/macro/macro_info.dart';
 
 import 'macro/frac_macro.dart';
+import 'macro/input_macro.dart';
 
 class PreDefinedCommands {
   PreDefinedCommands._() {
@@ -27,6 +28,7 @@ class PreDefinedCommands {
 
   void _init() {
     _command["frac"] = FracMacroInfo();
+    _command["input"] = InputMacroInfo();
   }
 
   MacroInfo getMacroInfo(String cmd) {
