@@ -78,12 +78,12 @@ class TexParser {
   /// 获取参数匹配对
   String getPairArgs(String left, String right) {
     List<String> stack = List();
+    int start = _pos;
     while(_pos < characters.length) {
       String ch = characters.elementAt(_pos);
       stack.add(ch);
       _pos ++;
       if(ch == right) {
-        String args = stack.join();
         while(stack.isNotEmpty){
           String item = stack.removeLast();
           if(item == left) {
@@ -91,6 +91,7 @@ class TexParser {
           }
         }
         if(stack.isEmpty) {
+          String args = characters.toString().substring(start, _pos);
           if(args.length >= 2) {
             return args.substring(1, args.length -1);
           }

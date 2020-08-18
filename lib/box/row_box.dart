@@ -7,28 +7,24 @@ import 'package:flatex/box.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import '../atom.dart';
-import '../tex_environment.dart';
-
 class RowBox extends Box {
-  TexEnvironment environment;
   RowAtom rowAtom;
 
-  RowBox(this.environment, this.rowAtom);
+  RowBox();
 
   @override
   Widget buildWidget(BuildContext context) {
-    List<Atom> atoms = rowAtom.children;
-    List<Widget> children = List();
-    if (atoms != null) {
-      atoms.forEach((element) {
-        Box box = element.createBox(environment);
-        children.add(box.buildWidget(context));
+    List<Widget> items = List();
+    if (children != null) {
+      children.forEach((element) {
+        Widget item = element.buildWidget(context);
+        items.add(item);
       });
     }
     return Wrap(
+      crossAxisAlignment: WrapCrossAlignment.center,
       direction: Axis.horizontal,
-      children: children,
+      children: items,
     );
   }
 }
