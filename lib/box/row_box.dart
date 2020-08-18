@@ -22,6 +22,7 @@ class RowBox extends Box {
       });
     }
     return Wrap(
+      crossAxisAlignment: WrapCrossAlignment.center,
       direction: Axis.horizontal,
       children: items,
     );

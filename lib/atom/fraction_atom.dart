@@ -21,7 +21,7 @@ class FractionAtom extends Atom {
 
     ColumnBox columnBox = ColumnBox();
     columnBox.add(numBox);
-    columnBox.add(HLineBox().setWidth(20).setHeight(2));
+    columnBox.add(HLineBox().setWidth(30).setHeight(2));
     columnBox.add(denomBox);
     return columnBox;
   }
