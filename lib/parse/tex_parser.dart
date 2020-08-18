@@ -33,7 +33,6 @@ class TexParser {
           MacroInfo macroInfo = PreDefinedCommands.instance.getMacroInfo(command);
           if(macroInfo != null) {
             List<String> arguments = _getArguments();
-            print(arguments.join("|"));
             Atom atom = macroInfo.buildAtom(this, arguments);
             teXFormula?.add(atom);
           }

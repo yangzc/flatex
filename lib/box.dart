@@ -13,6 +13,7 @@ abstract class Box {
   List<Box> children = List<Box>();
   Box parent;
   Box elderParent;
+  int depth = 0;//深度
 
   void add(Box b) {
     children.add(b);

@@ -27,7 +27,11 @@ class RowAtom extends Atom {
 
   @override
   Box createBox(TexEnvironment environment) {
-    return RowBox(environment, this);
+    RowBox box = RowBox();
+    children.forEach((element) {
+      box.add(element.createBox(environment));
+    });
+    return box;
   }
 
 }

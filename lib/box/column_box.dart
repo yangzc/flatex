@@ -11,8 +11,12 @@ class ColumnBox extends Box {
   @override
   Widget buildWidget(BuildContext context) {
     List<Widget> items = List();
+    print(depth);
     if(children != null) {
       children.forEach((element) {
+        if(element is ColumnBox) {
+          element.depth = depth + 1;
+        }
         Widget item = element.buildWidget(context);
         items.add(item);
       });

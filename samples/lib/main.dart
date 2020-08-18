@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
 //    TexParser parser = TexParser("\\frac{abcdef}{123456}", null);
 //    parser.parse();
-    TeXFormula formula = TeXFormula.parse("\\frac{\\frac{1}{2}}{abc}");
+    TeXFormula formula = TeXFormula.parse("g2\\frac{\\frac{b}{c}}{a}");
     Atom root = formula.root;
     Widget child;
     if(root != null) {
