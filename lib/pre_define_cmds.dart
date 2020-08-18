@@ -1,6 +1,11 @@
+///
+/// Copyright (C) 2020 The flatex Project
+/// @author yangzc on 2020/08/18.
 import 'dart:collection';
 
 import 'package:flatex/macro/macro_info.dart';
+
+import 'macro/frac_macro.dart';
 
 class PreDefinedCommands {
   PreDefinedCommands._() {
@@ -21,7 +26,7 @@ class PreDefinedCommands {
   }
 
   void _init() {
-    _command["frac"] = null;
+    _command["frac"] = FracMacroInfo();
   }
 
   MacroInfo getMacroInfo(String cmd) {

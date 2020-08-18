@@ -4,19 +4,19 @@
 ///
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
 
 import '../box.dart';
 
-class CharBox extends Box {
-  String text;
-
-  CharBox(this.text);
+class HLineBox extends Box {
+  HLineBox();
 
   @override
   Widget buildWidget(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(color: Colors.blue),
+    return Container(
+      height: height,
+      color: Colors.black,
+      width: width,
     );
   }
 }

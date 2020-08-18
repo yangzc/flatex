@@ -1,3 +1,6 @@
+///
+/// Copyright (C) 2020 The flatex Project
+/// @author yangzc on 2020/08/18.
 import 'package:flatex/atom.dart';
 import 'package:flatex/atom/char_atom.dart';
 import 'package:flatex/macro/macro_info.dart';
@@ -38,6 +41,7 @@ class TexParser {
         default:
           {
             teXFormula?.add(CharAtom(ch));
+            _pos ++;
           }
       }
     }

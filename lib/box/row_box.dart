@@ -1,3 +1,7 @@
+///
+/// Copyright (C) 2020 The flatex Project
+/// @author yangzc on 2020/08/18.
+///
 import 'package:flatex/atom/row_atom.dart';
 import 'package:flatex/box.dart';
 import 'package:flutter/cupertino.dart';

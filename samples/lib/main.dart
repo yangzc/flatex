@@ -77,38 +77,22 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
 //    TexParser parser = TexParser("\\frac{abcdef}{123456}", null);
 //    parser.parse();
-    TeXFormula formula = TeXFormula.parse("\\frac{abcdef}{123456}");
+    TeXFormula formula = TeXFormula.parse("\\frac{123}{abc}");
     Atom root = formula.root;
+    Widget child;
     if(root != null) {
       Box box = root.createBox(null);
-      Widget widget = box.buildWidget(context);
+      child = box.buildWidget(context);
+    } else {
+      print("empty!");
     }
-
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: ListView.builder(
-        itemBuilder: (BuildContext context, int pos) {
-          return Container(
-            margin: EdgeInsets.only(left: 3, right: 3),
-            decoration: ShapeDecoration(
-              color: Color(0xffff6c6c),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(10),
-                ),
-              ),
-            ),
-            child: Text(
-                '😀😁😂😃😄😅😆😉😊😋😎😍😘😗😙😚☺😇😐😑😶😏😣😥😮😯😪😫😴😌😛😜😝😒😓😔😕😲😷😖😞😟😤😢😭😦😧😨😬😰😱😳😵😡😠',
-                style: TextStyle(color: Colors.white, fontSize: 13)),
-          );
-        },
-        itemCount: 2,
-      ),
+      body: child ?? Text("Empty", style: TextStyle(color: Colors.red),),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
