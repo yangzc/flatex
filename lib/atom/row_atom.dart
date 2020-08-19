@@ -8,12 +8,11 @@ import 'package:flatex/box/row_box.dart';
 import 'package:flatex/tex_environment.dart';
 
 class RowAtom extends Atom {
-
   List<Atom> children = List();
 
   RowAtom(Atom atom) {
-    if(atom != null) {
-      if(atom is RowAtom) {
+    if (atom != null) {
+      if (atom is RowAtom) {
         children.addAll(atom.children);
       } else {
         children.add(atom);
@@ -25,6 +24,10 @@ class RowAtom extends Atom {
     children.add(atom);
   }
 
+  Atom last() {
+    return children.last;
+  }
+
   @override
   Box createBox(TexEnvironment environment) {
     RowBox box = RowBox();
@@ -33,5 +36,4 @@ class RowAtom extends Atom {
     });
     return box;
   }
-
 }

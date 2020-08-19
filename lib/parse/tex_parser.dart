@@ -10,7 +10,6 @@ import 'package:flutter/widgets.dart';
 import 'tex_formula.dart';
 
 class TexParser {
-
   static const String ESCAPE = '\\';
 
   static const String L_GROUP = '{';
@@ -18,30 +17,38 @@ class TexParser {
 
   Characters characters;
   TeXFormula teXFormula;
-  TexParser(parseString, this.teXFormula): characters = Characters(parseString);
+  TexParser(parseString, this.teXFormula)
+      : characters = Characters(parseString);
 
   int _pos = 0;
   void parse() {
     int length = characters.length;
     String ch;
-    while(_pos < length) {
+    while (_pos < length) {
       ch = characters.elementAt(_pos);
-      switch(ch) {
-        case ESCAPE: {
-          _pos ++;
-          String command = _getCommand();
-          MacroInfo macroInfo = PreDefinedCommands.instance.getMacroInfo(command);
-          if(macroInfo != null) {
-            List<String> arguments = _getArguments();
-            Atom atom = macroInfo.buildAtom(this, arguments);
-            teXFormula?.add(atom);
+      switch (ch) {
+        case ESCAPE:
+          {
+            _pos++;
+            String command = _getCommand();
+            MacroInfo macroInfo =
+                PreDefinedCommands.instance.getMacroInfo(command);
+            if (macroInfo != null) {
+              List<String> arguments = _getArguments();
+              Atom atom = macroInfo.buildAtom(this, arguments);
+              if (atom.position == Alignment.center) {
+                teXFormula?.add(atom);
+              } else {
+                Atom preAtom = teXFormula.last();
+                preAtom.addAroundAtom(atom);
+              }
+            }
+            break;
           }
-          break;
-        }
         default:
           {
             teXFormula?.add(CharAtom(ch));
-            _pos ++;
+            _pos++;
           }
       }
     }
@@ -50,11 +57,12 @@ class TexParser {
   String _getCommand() {
     String ch = characters.elementAt(_pos);
     String cmd = "";
-    while(_pos < characters.length) {
+    while (_pos < characters.length) {
       ch = characters.elementAt(_pos);
-      if ((ch.codeUnitAt(0) < 'a'.codeUnitAt(0) || ch.codeUnitAt(0) > 'z'.codeUnitAt(0))
-          && (ch.codeUnitAt(0) < 'A'.codeUnitAt(0) || ch.codeUnitAt(0) > 'Z'.codeUnitAt(0)))
-        break;
+      if ((ch.codeUnitAt(0) < 'a'.codeUnitAt(0) ||
+              ch.codeUnitAt(0) > 'z'.codeUnitAt(0)) &&
+          (ch.codeUnitAt(0) < 'A'.codeUnitAt(0) ||
+              ch.codeUnitAt(0) > 'Z'.codeUnitAt(0))) break;
 
       _pos++;
       cmd += ch;
@@ -65,10 +73,9 @@ class TexParser {
   /// 获取参数
   List<String> _getArguments() {
     List<String> args = List();
-    while(_pos < characters.length) {
+    while (_pos < characters.length) {
       String ch = characters.elementAt(_pos);
-      if(ch != L_GROUP)
-        break;
+      if (ch != L_GROUP) break;
       String arg = getPairArgs(L_GROUP, R_GROUP);
       args.add(arg);
     }
@@ -79,21 +86,21 @@ class TexParser {
   String getPairArgs(String left, String right) {
     List<String> stack = List();
     int start = _pos;
-    while(_pos < characters.length) {
+    while (_pos < characters.length) {
       String ch = characters.elementAt(_pos);
       stack.add(ch);
-      _pos ++;
-      if(ch == right) {
-        while(stack.isNotEmpty){
+      _pos++;
+      if (ch == right) {
+        while (stack.isNotEmpty) {
           String item = stack.removeLast();
-          if(item == left) {
+          if (item == left) {
             break;
           }
         }
-        if(stack.isEmpty) {
+        if (stack.isEmpty) {
           String args = characters.toString().substring(start, _pos);
-          if(args.length >= 2) {
-            return args.substring(1, args.length -1);
+          if (args.length >= 2) {
+            return args.substring(1, args.length - 1);
           }
           return "";
         }

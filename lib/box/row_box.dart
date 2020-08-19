@@ -5,7 +5,6 @@
 import 'package:flatex/atom/row_atom.dart';
 import 'package:flatex/box.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class RowBox extends Box {
   RowAtom rowAtom;

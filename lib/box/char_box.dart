@@ -15,9 +15,14 @@ class CharBox extends Box {
 
   @override
   Widget buildWidget(BuildContext context) {
-    return Text(
+    Widget content = Text(
       text,
       style: TextStyle(color: Colors.blue, fontSize: fontSize),
     );
+    return buildSubWidget(
+        context,
+        Container(
+          child: content,
+        ));
   }
 }

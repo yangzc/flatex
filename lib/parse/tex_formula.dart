@@ -9,7 +9,7 @@ class TeXFormula {
   Atom root;
   TexParser _parser; //自己的解析器
 
-  TeXFormula.parse(String parseString): this(null, parseString);
+  TeXFormula.parse(String parseString) : this(null, parseString);
 
   /// parent: 上级解析器
   TeXFormula(TexParser parent, String parseString) {
@@ -27,5 +27,13 @@ class TeXFormula {
       RowAtom row = root;
       row.add(atom);
     }
+  }
+
+  Atom last() {
+    if (!(root is RowAtom)) {
+      root = RowAtom(root);
+    }
+    RowAtom row = root;
+    return row.last();
   }
 }

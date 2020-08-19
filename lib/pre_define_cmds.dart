@@ -6,7 +6,7 @@ import 'dart:collection';
 import 'package:flatex/macro/macro_info.dart';
 
 import 'macro/frac_macro.dart';
-import 'macro/upper_macro.dart';
+import 'macro/dot_macro.dart';
 
 class PreDefinedCommands {
   PreDefinedCommands._() {
