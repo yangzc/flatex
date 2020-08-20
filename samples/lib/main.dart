@@ -1,7 +1,4 @@
-import 'package:flatex/atom.dart';
-import 'package:flatex/box.dart';
-import 'package:flatex/parse/tex_formula.dart';
-import 'package:flatex/tex_environment.dart';
+import 'package:flatex/flatex.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -76,29 +73,41 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-//    TexParser parser = TexParser("\\frac{abcdef}{123456}", null);
-//    parser.parse();
-    TeXFormula formula =
-        TeXFormula.parse("12\\dot{2}3"); //+\\dot{2}+\\frac{\\frac{1}{a}}{c}
-    Atom root = formula.root;
-    Widget child;
-    if (root != null) {
-      Box box = root.createBox(TexEnvironment(16));
-      child = box.buildWidget(context);
-    } else {
-      print("empty!");
-    }
+
+//    Row row = Row(
+//      children: [
+//        Text(
+//          "aaa",
+//          style: TextStyle(textBaseline: TextBaseline.ideographic),
+//        ),
+//        Baseline(
+//          child: Container(
+//            width: 100,
+//            height: 200,
+//            color: Colors.red,
+//            child: Container(
+//              color: Colors.black,
+//              width: 100,
+//              height: 1,
+//              margin: EdgeInsets.only(top: 100),
+//            ),
+//            alignment: Alignment.center,
+//          ),
+//          baseline: 100,
+//          baselineType: TextBaseline.alphabetic,
+//        )
+//      ],
+//    );
+
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: child ??
-          Text(
-            "Empty",
-            style: TextStyle(color: Colors.red),
-          ),
+//      body: row,
+      body: FLatex("12\\dot{2}3"),
+      // "\\input{}\\frac{\\frac{\\frac{\\input{}}{\\frac{e}{r}}}{c}}{a}"),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
