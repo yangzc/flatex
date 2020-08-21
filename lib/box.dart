@@ -61,7 +61,7 @@ abstract class Box {
     Alignment contentAlignment = Alignment.center;
 
     aroundBox.forEach((element) {
-      element.fontSize = 8;
+      element.fontSize = fontSize * 0.6;
       if (element.position.x != 0) {
         // 左或右
         width += element.size.width;
@@ -72,26 +72,21 @@ abstract class Box {
 
       if (element.position.y == 1) {
         // 下
-        height += element.size.height;
+        height += element.size.height -
+            ((element.position.x == 0) ? 0 : element.fontSize);
         offsetBottom = max(offsetBottom, element.size.height);
-        if (contentAlignment == Alignment.bottomCenter) {
-          contentAlignment = Alignment.center;
-        } else {
-          contentAlignment = Alignment.topCenter;
-        }
       } else if (element.position.y == -1) {
         // 上
-        height += element.size.height;
+        height += element.size.height -
+            ((element.position.x == 0) ? 0 : element.fontSize);
         offsetTop = max(offsetTop, element.size.height);
-        if (contentAlignment == Alignment.topCenter) {
-          contentAlignment = Alignment.center;
-        } else {
-          contentAlignment = Alignment.bottomCenter;
-        }
       } else {
         // 竖向中间
         height = max(element.size.height, height);
       }
+      double x = max(min(contentAlignment.x - element.position.x, 1), -1);
+      double y = max(min(contentAlignment.y - element.position.y, 1), -1);
+      contentAlignment = Alignment(x, y);
     });
 
     // 上下都有偏移，只留一个
@@ -123,7 +118,6 @@ abstract class Box {
     });
 
     return Container(
-      color: Colors.red,
       child: Stack(
         children: stackItems,
       ),
