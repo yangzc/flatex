@@ -106,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
 //      body: row,
-      body: FLatex("12\\dot{2}3"),
+      body: FLatex("12dsjkd32_{ds}jka^{ld}jdksjdk\\dot{2}sj"),
       // "\\input{}\\frac{\\frac{\\frac{\\input{}}{\\frac{e}{r}}}{c}}{a}"),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,

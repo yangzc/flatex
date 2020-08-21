@@ -16,7 +16,7 @@ class DotMacroInfo extends MacroInfo {
     if (num.root == null)
       throw new Exception(
           "Both numerator and denominator of a fraction can't be empty!");
-    Atom dot = CharAtom('·');
+    Atom dot = CharAtom('•');
     dot.position = Alignment.topCenter;
     Atom atom = num.root;
     atom.addAroundAtom(dot);

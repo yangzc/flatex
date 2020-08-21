@@ -11,6 +11,8 @@ import 'tex_formula.dart';
 
 class TexParser {
   static const String ESCAPE = '\\';
+  static const String SUBSCRIPT = '_';
+  static const String SUPERSCRIPT = '^';
 
   static const String L_GROUP = '{';
   static const String R_GROUP = '}';
@@ -36,15 +38,24 @@ class TexParser {
             if (macroInfo != null) {
               List<String> arguments = _getArguments();
               Atom atom = macroInfo.buildAtom(this, arguments);
-              if (atom.position == Alignment.center) {
-                teXFormula?.add(atom);
-              } else {
-                Atom preAtom = teXFormula.last();
-                preAtom.addAroundAtom(atom);
-              }
+              teXFormula?.add(atom);
             }
             break;
           }
+        case SUBSCRIPT:
+        case SUPERSCRIPT:
+          {
+            _pos++;
+            MacroInfo macroInfo = PreDefinedCommands.instance.getMacroInfo(ch);
+            if (macroInfo != null) {
+              List<String> arguments = _getArguments();
+              Atom atom = macroInfo.buildAtom(this, arguments);
+              Atom preAtom = teXFormula.last();
+              preAtom.addAroundAtom(atom);
+            }
+            break;
+          }
+
         default:
           {
             teXFormula?.add(CharAtom(ch));

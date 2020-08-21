@@ -23,13 +23,13 @@ class CharBox extends Box {
   }
 
   TextStyle _buildTextStyle() {
-    return TextStyle(color: Colors.blue);
+    return TextStyle(color: Colors.blue, fontSize: fontSize);
   }
 
   @override
   Size get size {
     final TextPainter textPainter = TextPainter(
-        text: TextSpan(text: text, style: TextStyle()),
+        text: TextSpan(text: text, style: TextStyle(fontSize: fontSize)),
         maxLines: 1,
         textDirection: TextDirection.ltr)
       ..layout(minWidth: 0, maxWidth: double.infinity);

@@ -30,11 +30,11 @@ class RowBox extends Box {
   @override
   Size get size {
     double width = 0, height = 0;
-    if(children != null) {
+    if (children != null) {
       children.forEach((element) {
         Size itemSize = element.size;
         width += itemSize.width;
-        if(itemSize.height > height) {
+        if (itemSize.height > height) {
           height = itemSize.height;
         }
       });

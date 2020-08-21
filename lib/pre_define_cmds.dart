@@ -4,10 +4,12 @@
 import 'dart:collection';
 
 import 'package:flatex/macro/macro_info.dart';
+import 'package:flutter/material.dart';
 
 import 'macro/frac_macro.dart';
 import 'macro/dot_macro.dart';
 import 'macro/input_macro.dart';
+import 'macro/sub_macro.dart';
 
 class PreDefinedCommands {
   PreDefinedCommands._() {
@@ -31,6 +33,8 @@ class PreDefinedCommands {
     _command["frac"] = FracMacroInfo();
     _command["dot"] = DotMacroInfo();
     _command["input"] = InputMacroInfo();
+    _command["_"] = SubMacroInfo(Alignment.topRight);
+    _command["^"] = SubMacroInfo(Alignment.bottomRight);
   }
 
   MacroInfo getMacroInfo(String cmd) {
