@@ -42,7 +42,7 @@ packages:
       name: collection
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.15.0-nullsafety"
+    version: "1.15.0-nullsafety.2"
   convert:
     dependency: transitive
     description:
@@ -101,7 +101,7 @@ packages:
       name: path
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.7.0"
+    version: "1.8.0-nullsafety"
   petitparser:
     dependency: transitive
     description:
@@ -169,7 +169,7 @@ packages:
       name: vector_math
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.0-nullsafety"
+    version: "2.1.0-nullsafety.2"
   xml:
     dependency: transitive
     description:
