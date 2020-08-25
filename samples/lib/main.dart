@@ -1,5 +1,7 @@
 import 'package:flatex/flatex.dart';
 import 'package:flutter/material.dart';
+import 'package:flatex/flatex.dart';
+import 'package:flatex/tex_environment.dart';
 
 void main() {
   runApp(MyApp());
@@ -98,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
 //        )
 //      ],
 //    );
-
+    TexEnvironment environment = TexEnvironment();
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -106,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
 //      body: row,
-      body: FLatex("2_{d}   a^{d}  1   \\dot{2}  s"),
+      body: FLatex(environment, "2_{d}   a^{d}  1   \\dot{2}  s"),
       // "\\input{}\\frac{\\frac{\\frac{\\input{}}{\\frac{e}{r}}}{c}}{a}"),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,

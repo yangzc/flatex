@@ -7,6 +7,7 @@ import 'package:flatex/box/char_box.dart';
 import '../atom.dart';
 import '../box.dart';
 import '../tex_environment.dart';
+import '../tex_environment.dart';
 
 class CharAtom extends Atom {
   String text;
@@ -15,8 +16,11 @@ class CharAtom extends Atom {
 
   @override
   Box createBox(TexEnvironment environment) {
-    Box charBox = CharBox(text);
-    addAroundBox(charBox, environment);
+    Box charBox = CharBox(environment, text);
+    TexEnvironment texEnvironment = TexEnvironment();
+    texEnvironment.textColor = environment.textColor;
+    texEnvironment.textSize = environment.textSize * 0.6;
+    addAroundBox(charBox, texEnvironment);
     return charBox;
   }
 }

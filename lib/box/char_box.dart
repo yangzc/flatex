@@ -4,13 +4,15 @@
 ///
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flatex/tex_environment.dart';
 
 import '../box.dart';
 
 class CharBox extends Box {
   String text;
+  TexEnvironment environment;
 
-  CharBox(this.text);
+  CharBox(this.environment, this.text);
 
   @override
   Widget buildWidget(BuildContext context) {
@@ -23,7 +25,8 @@ class CharBox extends Box {
   }
 
   TextStyle _buildTextStyle() {
-    return TextStyle(color: Colors.blue, fontSize: fontSize);
+    return TextStyle(
+        color: environment.textColor, fontSize: environment.textSize);
   }
 
   @override
