@@ -9,6 +9,6 @@ class InputAtom extends Atom {
 
   @override
   Box createBox(TexEnvironment environment) {
-    return InputBox();
+    return InputBox(environment);
   }
 }

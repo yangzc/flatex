@@ -37,6 +37,10 @@ class PreDefinedCommands {
     _command["^"] = SubMacroInfo(Alignment.bottomRight);
   }
 
+  void addMacroInfo(String cmd, MacroInfo macroInfo) {
+    _command[cmd] = macroInfo;
+  }
+
   MacroInfo getMacroInfo(String cmd) {
     return _command[cmd];
   }
