@@ -140,14 +140,13 @@ abstract class Box {
           text: text,
           style: TextStyle(fontSize: fontSize, height: 1.0),
         ),
-        strutStyle: StrutStyle(forceStrutHeight: true),
         maxLines: 1,
         textDirection: TextDirection.ltr)
       ..layout(minWidth: 0, maxWidth: double.infinity);
 //    TextBox textBox = textPainter.inlinePlaceholderBoxes[0];
 //    print(textBox);
-//    print(textPainter.height);
+    print(textPainter.height);
 //    print(textPainter.preferredLineHeight);
-    return Size(textPainter.width, textPainter.preferredLineHeight);
+    return textPainter.size;
   }
 }

@@ -25,13 +25,13 @@ class CharBox extends Box {
         context,
         Container(
           child: content,
-          decoration: ShapeDecoration(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(0),
-                ),
-                side: BorderSide(color: Colors.black, width: 0)),
-          ),
+//          decoration: ShapeDecoration(
+//            shape: RoundedRectangleBorder(
+//                borderRadius: BorderRadius.all(
+//                  Radius.circular(0),
+//                ),
+//                side: BorderSide(color: Colors.black, width: 0)),
+//          ),
         ));
   }
 

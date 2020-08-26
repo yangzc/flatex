@@ -20,20 +20,20 @@ class DotBox extends Box {
         width: 5,
         height: 5,
       ),
-      decoration: ShapeDecoration(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(0),
-            ),
-            side: BorderSide(color: Colors.black, width: 0)),
-      ),
+//      decoration: ShapeDecoration(
+//        shape: RoundedRectangleBorder(
+//            borderRadius: BorderRadius.all(
+//              Radius.circular(0),
+//            ),
+//            side: BorderSide(color: Colors.black, width: 0)),
+//      ),
 //      padding: EdgeInsets.only(bottom: 2),
     );
   }
 
   @override
   Size get size {
-    return Size(10, 10);
+    return Size(5, 5);
   }
 }
 
