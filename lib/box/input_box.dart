@@ -7,8 +7,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import '../tex_environment.dart';
 
 class InputBox extends Box {
-  final TexEnvironment environment;
-  InputBox(this.environment);
+  InputBox(TexEnvironment environment) : super(environment);
 
   @override
   Widget buildWidget(BuildContext context) {

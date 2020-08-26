@@ -6,9 +6,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../box.dart';
+import '../tex_environment.dart';
 
 class HLineBox extends Box {
-  HLineBox();
+  HLineBox(TexEnvironment texEnvironment) : super(texEnvironment);
 
   @override
   Widget buildWidget(BuildContext context) {

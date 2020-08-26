@@ -30,7 +30,7 @@ class RowAtom extends Atom {
 
   @override
   Box createBox(TexEnvironment environment) {
-    RowBox box = RowBox();
+    RowBox box = RowBox(environment);
 
     children.forEach((element) {
       box.add(element.createBox(environment));

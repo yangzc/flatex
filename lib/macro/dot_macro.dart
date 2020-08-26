@@ -3,6 +3,7 @@
 /// @author jiangxl on 2020/08/19.
 ///
 import 'package:flatex/atom.dart';
+import 'package:flatex/atom/dot_atom.dart';
 import 'package:flatex/macro/macro_info.dart';
 import 'package:flatex/parse/tex_formula.dart';
 import 'package:flatex/parse/tex_parser.dart';
@@ -16,7 +17,8 @@ class DotMacroInfo extends MacroInfo {
     if (num.root == null)
       throw new Exception(
           "Both numerator and denominator of a fraction can't be empty!");
-    Atom dot = CharAtom('•');
+    Atom dot = DotAtom();
+//    Atom dot = CharAtom('·');
     dot.position = Alignment.topCenter;
     Atom atom = num.root;
     atom.addAroundAtom(dot);

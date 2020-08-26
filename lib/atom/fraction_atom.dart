@@ -34,9 +34,9 @@ class FractionAtom extends Atom {
     } else {
       width = denomSize.width;
     }
-    ColumnBox columnBox = ColumnBox();
+    ColumnBox columnBox = ColumnBox(environment);
     columnBox.add(numBox);
-    columnBox.add(HLineBox().setWidth(width + 10).setHeight(2));
+    columnBox.add(HLineBox(environment).setWidth(width + 10).setHeight(2));
     columnBox.add(denomBox);
     return columnBox;
   }

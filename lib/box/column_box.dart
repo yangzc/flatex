@@ -3,9 +3,12 @@
 /// @author yangzc on 2020/08/18.
 ///
 import 'package:flatex/box.dart';
+import 'package:flatex/tex_environment.dart';
 import 'package:flutter/cupertino.dart';
 
 class ColumnBox extends Box {
+  ColumnBox(TexEnvironment environment) : super(environment);
+
   @override
   Widget buildWidget(BuildContext context) {
     List<Widget> items = List();

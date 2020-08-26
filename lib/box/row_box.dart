@@ -6,10 +6,12 @@ import 'package:flatex/atom/row_atom.dart';
 import 'package:flatex/box.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../tex_environment.dart';
+
 class RowBox extends Box {
   RowAtom rowAtom;
 
-  RowBox();
+  RowBox(TexEnvironment texEnvironment) : super(texEnvironment);
 
   @override
   Widget buildWidget(BuildContext context) {

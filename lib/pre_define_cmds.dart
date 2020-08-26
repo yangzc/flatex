@@ -33,8 +33,8 @@ class PreDefinedCommands {
     _command["frac"] = FracMacroInfo();
     _command["dot"] = DotMacroInfo();
     _command["input"] = InputMacroInfo();
-    _command["_"] = SubMacroInfo(Alignment.topRight);
-    _command["^"] = SubMacroInfo(Alignment.bottomRight);
+    _command["_"] = SubMacroInfo(Alignment.bottomRight);
+    _command["^"] = SubMacroInfo(Alignment.topRight);
   }
 
   void addMacroInfo(String cmd, MacroInfo macroInfo) {
