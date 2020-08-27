@@ -145,7 +145,7 @@ abstract class Box {
       ..layout(minWidth: 0, maxWidth: double.infinity);
 //    TextBox textBox = textPainter.inlinePlaceholderBoxes[0];
 //    print(textBox);
-    print(textPainter.height);
+//    print(textPainter.height);
 //    print(textPainter.preferredLineHeight);
     return textPainter.size;
   }
