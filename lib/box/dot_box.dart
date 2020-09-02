@@ -52,6 +52,6 @@ class _DotPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
-    throw UnimplementedError();
+    return false;
   }
 }
