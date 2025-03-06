@@ -19,17 +19,8 @@ class FLatex extends StatelessWidget {
   Widget build(BuildContext context) {
     TeXFormula formula = TeXFormula.parse(latex);
     Atom root = formula.root;
-    Widget child;
-    if (root != null) {
-      Box box = root.createBox(texEnvironment);
-      child = box.buildWidget(context);
-    } else {
-      print("empty!");
-    }
-    return child ??
-        Text(
-          "Empty",
-          style: TextStyle(color: Colors.red),
-        );
+    Box box = root.createBox(texEnvironment);
+    Widget child = box.buildWidget(context);
+    return child;
   }
 }

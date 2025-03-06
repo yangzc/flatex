@@ -12,22 +12,15 @@ import 'macro/input_macro.dart';
 import 'macro/sub_macro.dart';
 
 class PreDefinedCommands {
-  PreDefinedCommands._() {
+  static final PreDefinedCommands _instance = PreDefinedCommands._internal();
+
+  factory PreDefinedCommands() => _instance;
+
+  PreDefinedCommands._internal() {
     _init();
   }
 
-  factory PreDefinedCommands() => _getInstance();
-
-  static PreDefinedCommands get instance => _getInstance();
-  static PreDefinedCommands _instance;
   HashMap<String, MacroInfo> _command = HashMap();
-
-  static PreDefinedCommands _getInstance() {
-    if (_instance == null) {
-      _instance = PreDefinedCommands._();
-    }
-    return _instance;
-  }
 
   void _init() {
     _command["frac"] = FracMacroInfo();
@@ -41,7 +34,7 @@ class PreDefinedCommands {
     _command[cmd] = macroInfo;
   }
 
-  MacroInfo getMacroInfo(String cmd) {
+  MacroInfo? getMacroInfo(String cmd) {
     return _command[cmd];
   }
 }

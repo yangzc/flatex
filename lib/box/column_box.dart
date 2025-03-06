@@ -11,13 +11,11 @@ class ColumnBox extends Box {
 
   @override
   Widget buildWidget(BuildContext context) {
-    List<Widget> items = List();
-    if (children != null) {
-      children.forEach((element) {
-        Widget item = element.buildWidget(context);
-        items.add(item);
-      });
-    }
+    List<Widget> items = [];
+    children.forEach((element) {
+      Widget item = element.buildWidget(context);
+      items.add(item);
+    });
     return Column(
       children: items,
     );
@@ -26,15 +24,13 @@ class ColumnBox extends Box {
   @override
   Size get size {
     double width = 0, height = 0;
-    if (children != null) {
-      children.forEach((element) {
-        Size itemSize = element.size;
-        if (itemSize.width > width) {
-          width = itemSize.width;
-        }
-        height += itemSize.height;
-      });
-    }
+    children.forEach((element) {
+      Size itemSize = element.size;
+      if (itemSize.width > width) {
+        width = itemSize.width;
+      }
+      height += itemSize.height;
+    });
     return Size(width, height);
   }
 }

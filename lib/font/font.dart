@@ -8,7 +8,7 @@ class Font {
   String fontName;
   num space;
   String path;
-  List<CharFont> charFonts = List();
+  List<CharFont> charFonts = [];
 
 
   Font(this.fontId, this.path, this.fontName, this.space);

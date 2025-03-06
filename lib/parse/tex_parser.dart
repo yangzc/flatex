@@ -33,8 +33,8 @@ class TexParser {
           {
             _pos++;
             String command = _getCommand();
-            MacroInfo macroInfo =
-                PreDefinedCommands.instance.getMacroInfo(command);
+            MacroInfo? macroInfo =
+                PreDefinedCommands().getMacroInfo(command);
             if (macroInfo != null) {
               List<String> arguments = _getArguments();
               Atom atom = macroInfo.buildAtom(this, arguments);
@@ -46,7 +46,7 @@ class TexParser {
         case SUPERSCRIPT:
           {
             _pos++;
-            MacroInfo macroInfo = PreDefinedCommands.instance.getMacroInfo(ch);
+            MacroInfo? macroInfo = PreDefinedCommands().getMacroInfo(ch);
             if (macroInfo != null) {
               List<String> arguments = _getArguments();
               Atom atom = macroInfo.buildAtom(this, arguments);
@@ -83,7 +83,7 @@ class TexParser {
 
   /// 获取参数
   List<String> _getArguments() {
-    List<String> args = List();
+    List<String> args = [];
     while (_pos < characters.length) {
       String ch = characters.elementAt(_pos);
       if (ch != L_GROUP) break;
@@ -95,7 +95,7 @@ class TexParser {
 
   /// 获取参数匹配对
   String getPairArgs(String left, String right) {
-    List<String> stack = List();
+    List<String> stack = [];
     int start = _pos;
     while (_pos < characters.length) {
       String ch = characters.elementAt(_pos);

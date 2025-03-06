@@ -8,7 +8,7 @@ import 'box.dart';
 
 abstract class Atom {
   Alignment position = Alignment.center;
-  List<Atom> aroundList = List();
+  List<Atom> aroundList = [];
 
   /// 附加环绕atom
   void addAroundAtom(Atom atom) {

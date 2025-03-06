@@ -11,17 +11,15 @@ import '../tex_environment.dart';
 class RowBox extends Box {
   RowAtom rowAtom;
 
-  RowBox(TexEnvironment texEnvironment) : super(texEnvironment);
+  RowBox(TexEnvironment texEnvironment, this.rowAtom) : super(texEnvironment);
 
   @override
   Widget buildWidget(BuildContext context) {
-    List<Widget> items = List();
-    if (children != null) {
-      children.forEach((element) {
-        Widget item = element.buildWidget(context);
-        items.add(item);
-      });
-    }
+    List<Widget> items = [];
+    children.forEach((element) {
+      Widget item = element.buildWidget(context);
+      items.add(item);
+    });
     return Wrap(
       crossAxisAlignment: WrapCrossAlignment.end,
       direction: Axis.horizontal,
@@ -32,15 +30,13 @@ class RowBox extends Box {
   @override
   Size get size {
     double width = 0, height = 0;
-    if (children != null) {
-      children.forEach((element) {
-        Size itemSize = element.size;
-        width += itemSize.width;
-        if (itemSize.height > height) {
-          height = itemSize.height;
-        }
-      });
-    }
+    children.forEach((element) {
+      Size itemSize = element.size;
+      width += itemSize.width;
+      if (itemSize.height > height) {
+        height = itemSize.height;
+      }
+    });
     return Size(width, height);
   }
 }

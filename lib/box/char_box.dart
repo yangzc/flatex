@@ -11,7 +11,7 @@ import '../box.dart';
 class CharBox extends Box {
   String text;
 
-  CharBox(TexEnvironment environment, this.text) : super(environment);
+  CharBox(TexEnvironment environment, this.text): super(environment);
 
   @override
   Widget buildWidget(BuildContext context) {

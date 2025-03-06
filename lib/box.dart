@@ -20,13 +20,13 @@ abstract class Box {
     return Size(_width, _height);
   }
 
-  List<Box> children = List<Box>();
-  Box parent;
-  Box elderParent;
+  List<Box> children = <Box>[];
+  Box? parent;
+  Box? elderParent;
   int depth = 0; //深度
 
-  Alignment position;
-  List<Box> aroundBox = List<Box>();
+  Alignment position = Alignment.center;
+  List<Box> aroundBox = <Box>[];
 
   void add(Box b) {
     children.add(b);
@@ -104,7 +104,7 @@ abstract class Box {
 //      offsetTop = 0;
 //    }
 
-    List<Widget> stackItems = List();
+    List<Widget> stackItems = [];
 
     aroundBox.forEach((element) {
       stackItems.add(Container(
