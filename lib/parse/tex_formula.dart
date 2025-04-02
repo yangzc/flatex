@@ -18,6 +18,7 @@ class TeXFormula {
   }
 
   void add(Atom atom) {
+    root = atom;
     if (!(root is RowAtom)) {
       root = RowAtom(root!);
     }
