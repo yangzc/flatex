@@ -6,7 +6,7 @@ import 'package:flatex/atom/row_atom.dart';
 import 'package:flatex/parse/tex_parser.dart';
 
 class TeXFormula {
-  late Atom root;
+  Atom? root;
   late TexParser _parser; //自己的解析器
 
   TeXFormula.parse(String parseString) : this(null, parseString);
@@ -18,7 +18,9 @@ class TeXFormula {
   }
 
   void add(Atom atom) {
-    root = atom;
+    if (root == null) {
+      root = atom;
+    }
     if (!(root is RowAtom)) {
       root = RowAtom(root!);
     }
@@ -28,7 +30,7 @@ class TeXFormula {
 
   Atom last() {
     if (!(root is RowAtom)) {
-      root = RowAtom(root);
+      root = RowAtom(root!);
     }
     RowAtom row = root as RowAtom;
     return row.last();

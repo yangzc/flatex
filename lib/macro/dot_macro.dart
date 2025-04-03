@@ -7,7 +7,6 @@ import 'package:flatex/atom/dot_atom.dart';
 import 'package:flatex/macro/macro_info.dart';
 import 'package:flatex/parse/tex_formula.dart';
 import 'package:flatex/parse/tex_parser.dart';
-import 'package:flatex/atom/char_atom.dart';
 import 'package:flutter/material.dart';
 
 class DotMacroInfo extends MacroInfo {
@@ -20,7 +19,7 @@ class DotMacroInfo extends MacroInfo {
     Atom dot = DotAtom();
 //    Atom dot = CharAtom('·');
     dot.position = Alignment.topCenter;
-    Atom atom = num.root;
+    Atom atom = num.root!;
     atom.addAroundAtom(dot);
     return atom;
   }

@@ -15,6 +15,6 @@ class FracMacroInfo extends MacroInfo {
     if (num.root == null || denom.root == null)
       throw new Exception(
           "Both numerator and denominator of a fraction can't be empty!");
-    return FractionAtom(num.root, denom.root);
+    return FractionAtom(num.root!, denom.root!);
   }
 }

@@ -14,7 +14,10 @@ class SubMacroInfo extends MacroInfo {
   SubMacroInfo(this.position);
   Atom buildAtom(TexParser tp, List<String> args) {
     TeXFormula num = new TeXFormula(tp, args[0]);
-    Atom atom = num.root;
+    if (num.root == null)
+      throw new Exception(
+          "Both numerator and denominator of a fraction can't be empty!");
+    Atom atom = num.root!;
     atom.position = position;
     return atom;
   }
