@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flatex/listener/i_listeners.dart';
 ///
 /// Copyright (C) 2020 The flatex Project
 /// @author yangzc on 2020/08/18.
@@ -8,9 +9,27 @@ import 'package:flutter/material.dart';
 
 import 'tex_environment.dart';
 
-abstract class Box {
+abstract class Box implements IBoxSizeChangeListener {
   double _width = 0.0;
   double _height = 0.0;
+  List<IBoxSizeChangeListener> _sizeChangeListeners = [];
+
+  void addSizeChangeListener(IBoxSizeChangeListener listener) {
+    _sizeChangeListeners.add(listener);
+  }
+
+  List<IBoxSizeChangeListener> getListeners() {
+    return _sizeChangeListeners;
+  }
+
+  @override
+  void onBoxSizeChange(Size size) {}
+
+  void notifySizeChange({Size? parentSize}) {
+    _sizeChangeListeners.forEach((element) {
+      element.onBoxSizeChange(parentSize ?? this.size);
+    });
+  }
 
   TexEnvironment environment;
 
@@ -28,16 +47,22 @@ abstract class Box {
   Alignment position = Alignment.center;
   List<Box> aroundBox = <Box>[];
 
-  void add(Box b) {
+  void add(Box b, {listen = true}) {
     children.add(b);
     b.parent = this;
     b.elderParent = elderParent;
+    if (listen) {
+      b.addSizeChangeListener(this);
+    }
   }
 
-  void insert(int pos, Box b) {
+  void insert(int pos, Box b, {listen = true}) {
     children[pos] = b;
     b.parent = this;
     b.elderParent = elderParent;
+    if (listen) {
+      b.addSizeChangeListener(this);
+    }
   }
 
   Box setWidth(double width) {
@@ -143,10 +168,6 @@ abstract class Box {
         maxLines: 1,
         textDirection: TextDirection.ltr)
       ..layout(minWidth: 0, maxWidth: double.infinity);
-//    TextBox textBox = textPainter.inlinePlaceholderBoxes[0];
-//    print(textBox);
-//    print(textPainter.height);
-//    print(textPainter.preferredLineHeight);
     return textPainter.size;
   }
 }

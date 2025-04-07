@@ -36,4 +36,9 @@ class ColumnBox extends Box {
     });
     return Size(width, height);
   }
+
+  @override
+  void onBoxSizeChange(Size size) {
+    notifySizeChange();
+  }
 }

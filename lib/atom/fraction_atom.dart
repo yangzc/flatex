@@ -25,9 +25,11 @@ class FractionAtom extends Atom {
 
     Box numBox = num.createBox(environment);
     Box devNumBox = devNum.createBox(environment);
+    var hLineBox = HLineBox(environment).setWidth(20).setHeight(1);
     ColumnBox columnBox = ColumnBox(environment);
     columnBox.add(numBox);
-    columnBox.add(HLineBox(environment).setWidth(20).setHeight(1));
+    columnBox.add(hLineBox, listen: false);
+    columnBox.addSizeChangeListener(hLineBox);
     columnBox.add(devNumBox);
     return columnBox;
   }
