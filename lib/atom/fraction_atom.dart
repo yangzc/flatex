@@ -7,37 +7,28 @@ import 'package:flatex/box/hline_box.dart';
 import '../atom.dart';
 import '../box.dart';
 import '../tex_environment.dart';
-import 'dart:ui';
 
 class FractionAtom extends Atom {
-  Atom num, denom;
+  Atom num, devNum;
   int depth = 0;
-  FractionAtom(this.num, this.denom);
+
+  FractionAtom(this.num, this.devNum);
 
   @override
   Box createBox(TexEnvironment environment) {
-    if(num is FractionAtom) {
+    if (num is FractionAtom) {
       (num as FractionAtom).depth = depth + 1;
     }
-    if(denom is FractionAtom) {
-      (denom as FractionAtom).depth = depth + 1;
+    if (devNum is FractionAtom) {
+      (devNum as FractionAtom).depth = depth + 1;
     }
 
     Box numBox = num.createBox(environment);
-    Box denomBox = denom.createBox(environment);
-    Size numSize = numBox.size;
-    Size denomSize = denomBox.size;
-
-    double width = 0;
-    if(numSize.width > denomSize.width) {
-      width = numSize.width;
-    } else {
-      width = denomSize.width;
-    }
+    Box devNumBox = devNum.createBox(environment);
     ColumnBox columnBox = ColumnBox(environment);
     columnBox.add(numBox);
-    columnBox.add(HLineBox(environment).setWidth(width + 10).setHeight(2));
-    columnBox.add(denomBox);
+    columnBox.add(HLineBox(environment).setWidth(20).setHeight(1));
+    columnBox.add(devNumBox);
     return columnBox;
   }
 }

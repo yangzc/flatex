@@ -19,10 +19,12 @@ class TexParser {
 
   Characters characters;
   TeXFormula teXFormula;
+
   TexParser(parseString, this.teXFormula)
       : characters = Characters(parseString);
 
   int _pos = 0;
+
   void parse() {
     int length = characters.length;
     String ch;
@@ -33,12 +35,11 @@ class TexParser {
           {
             _pos++;
             String command = _getCommand();
-            MacroInfo? macroInfo =
-                PreDefinedCommands().getMacroInfo(command);
+            MacroInfo? macroInfo = PreDefinedCommands().getMacroInfo(command);
             if (macroInfo != null) {
               List<String> arguments = _getArguments();
               Atom atom = macroInfo.buildAtom(this, arguments);
-              teXFormula?.add(atom);
+              teXFormula.add(atom);
             }
             break;
           }
@@ -58,7 +59,7 @@ class TexParser {
 
         default:
           {
-            teXFormula?.add(CharAtom(ch));
+            teXFormula.add(CharAtom(ch));
             _pos++;
           }
       }

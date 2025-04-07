@@ -23,9 +23,10 @@ class TeXFormula {
     }
     if (!(root is RowAtom)) {
       root = RowAtom(root!);
+    } else {
+      RowAtom row = root as RowAtom;
+      row.add(atom);
     }
-    RowAtom row = root as RowAtom;
-    row.add(atom);
   }
 
   Atom last() {
