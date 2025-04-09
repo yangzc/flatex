@@ -16,12 +16,8 @@ class ColumnBox extends Box {
       Widget item = element.buildWidget(context);
       items.add(item);
     });
-    return Container(
-      color: Colors.transparent,
-      padding: const EdgeInsets.only(left: 2.0, right: 2.0),
-      child: Column(
-        children: items,
-      ),
+    return Column(
+      children: items,
     );
   }
 
