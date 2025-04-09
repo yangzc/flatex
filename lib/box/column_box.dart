@@ -4,7 +4,7 @@
 ///
 import 'package:flatex/box.dart';
 import 'package:flatex/tex_environment.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class ColumnBox extends Box {
   ColumnBox(TexEnvironment environment) : super(environment);
@@ -16,7 +16,8 @@ class ColumnBox extends Box {
       Widget item = element.buildWidget(context);
       items.add(item);
     });
-    return Padding(
+    return Container(
+      color: Colors.transparent,
       padding: const EdgeInsets.only(left: 2.0, right: 2.0),
       child: Column(
         children: items,
